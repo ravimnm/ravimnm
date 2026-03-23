@@ -22,7 +22,10 @@ Open-source projects in **cybersecurity, application security, distributed syste
 
 ### 🛡️ Java Runtime Security Agent (JRSA)
 - JVM instrumentation for runtime security monitoring
-- Focus on bytecode-level inspection and attack detection  
+- Focus on bytecode-level inspection and attack detection
+- Runtime method interception using bytecode instrumentation
+- Monitoring of sensitive operations (e.g., command execution)
+- Security logging without modifying application code  
 👉 https://github.com/ravimnm/java_runtime_security_agent
 
 ## 🧠 Other Notable Projects
