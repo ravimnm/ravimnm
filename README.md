@@ -1,60 +1,95 @@
 # 💫 About Me
 
 👋 **About Me**
+# 👋 Ravi Sankar Manem
 
-🔭 **Currently working on**  
-Building practical **cybersecurity and systems projects**, including SOC/SIEM labs, JVM runtime security tooling, and forensic-grade log analysis platforms.
+Backend Engineer | Security-Focused Systems Builder
 
-🤝 **Open to collaborating on**  
-Open-source projects in **cybersecurity, application security, distributed systems, and developer tooling**, especially those focused on real-world problems, correctness, and reliability.
+I build systems at the intersection of **backend engineering, security, and observability** — focused on correctness, reliability, and real-world threat handling.
 
-## 🚀 Featured Project
+---
+
+## 🚀 Featured Projects
 
 ### 🔐 Secure Backend API with RBAC
 - Java 17, Spring Boot 3, MongoDB
-- JWT-based authentication & role-based access control
-- Rate limiting and request validation
+- JWT authentication + role & permission-based access control
+- Rate limiting and secure API design
 - Layered architecture (Controller → Service → Repository)
 
-👉 https://github.com/ravimnm/secure-backend-api-rbac
+👉 https://github.com/ravimnm/secure-access-control-service
 
-
+---
 
 ### 🛡️ Java Runtime Security Agent (JRSA)
-- JVM instrumentation for runtime security monitoring
-- Focus on bytecode-level inspection and attack detection
-- Runtime method interception using bytecode instrumentation
-- Monitoring of sensitive operations (e.g., command execution)
-- Security logging without modifying application code  
+- JVM bytecode instrumentation for runtime security monitoring
+- Method interception to detect sensitive operations
+- Security logging without modifying application code
+
 👉 https://github.com/ravimnm/java_runtime_security_agent
 
-## 🧠 Other Notable Projects
+---
+
+## 🧠 Other Projects
 
 ### 🤖 AI-Based Log Investigation System
-- Log analysis pipeline with anomaly detection concepts
+- Log analysis pipeline for anomaly detection
 - Focused on security event investigation workflows  
 👉 https://github.com/ravimnm/ai_based_log_investigation
 
 ---
 
 ### 🚗 Agentic Fleet Maintenance System
-- Predictive maintenance system using telemetry and rule-based diagnostics  
+- Predictive maintenance using telemetry + rule-based diagnostics  
 👉 https://github.com/ravimnm/agentic-fleet-system-maintenance
-👉 https://github.com/ravimnm/secure-backend-api-rbac
-🌱 **Currently learning**  
-- SOC operations and incident response  
-- JVM internals and bytecode instrumentation  
-- Secure system design and evidence-aware logging  
-- Scalable log ingestion and analysis pipelines  
-
-💬 **Ask me about**  
-SOC/SIEM labs, ELK Stack, Java & JVM internals, application security, secure data wiping, and building security-focused systems from scratch.
-
-⚡ **Fun fact**  
-I enjoy working at the intersection of **systems, security, and correctness**, where understanding *why* something breaks is as important as fixing it.
 
 ---
 
+## 🛠️ Core Skills
+
+**Backend & Systems**
+- Java, Spring Boot, REST APIs
+- MongoDB, MySQL
+- System design fundamentals
+
+**Security & Observability**
+- RBAC, JWT authentication
+- SIEM tools (ELK Stack, Splunk)
+- Secure logging and threat analysis
+
+**Tools**
+- Git, Docker, Maven, Postman
+
+---
+
+## 🌱 Currently Learning
+
+- JVM internals & bytecode instrumentation  
+- Secure system design  
+- Scalable log ingestion pipelines  
+- SOC operations & incident response  
+
+---
+
+## 💬 Areas of Interest
+
+- Application Security  
+- Backend System Design  
+- JVM Internals  
+- Security Engineering  
+
+---
+
+## 🌐 Connect
+
+- LinkedIn: https://linkedin.com/in/ravi-sankar-manem  
+- Email: manemravisankar28@gmail.com  
+
+---
+
+## ⚡ Note
+
+I focus on building systems where **security is not an afterthought**, but part of the core design.
 ## 🌐 Socials
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/ravi-sankar-manem)
