@@ -12,7 +12,7 @@ I build systems at the intersection of **backend engineering, security, and obse
 ## 🚀 Featured Projects
 
 ### 🔐 Secure Access Control Service
-- Java 17, Spring Boot 3, MongoDB
+- Java 17, Spring Boot 4, MongoDB
 - JWT authentication + role & permission-based access control
 - Rate limiting and secure API design
 - Layered architecture (Controller → Service → Repository)
