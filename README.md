@@ -11,7 +11,7 @@ I build systems at the intersection of **backend engineering, security, and obse
 
 ## 🚀 Featured Projects
 
-### 🔐 Secure Backend API with RBAC
+### 🔐 Secure Access Control Service
 - Java 17, Spring Boot 3, MongoDB
 - JWT authentication + role & permission-based access control
 - Rate limiting and secure API design
