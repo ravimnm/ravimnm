@@ -8,6 +8,36 @@ Building practical **cybersecurity and systems projects**, including SOC/SIEM la
 🤝 **Open to collaborating on**  
 Open-source projects in **cybersecurity, application security, distributed systems, and developer tooling**, especially those focused on real-world problems, correctness, and reliability.
 
+## 🚀 Featured Project
+
+### 🔐 Secure Backend API with RBAC
+- Java 17, Spring Boot 3, MongoDB
+- JWT-based authentication & role-based access control
+- Rate limiting and request validation
+- Layered architecture (Controller → Service → Repository)
+
+👉 https://github.com/ravimnm/secure-backend-api-rbac
+
+
+
+### 🛡️ Java Runtime Security Agent (JRSA)
+- JVM instrumentation for runtime security monitoring
+- Focus on bytecode-level inspection and attack detection  
+👉 https://github.com/ravimnm/java_runtime_security_agent
+
+## 🧠 Other Notable Projects
+
+### 🤖 AI-Based Log Investigation System
+- Log analysis pipeline with anomaly detection concepts
+- Focused on security event investigation workflows  
+👉 https://github.com/ravimnm/ai_based_log_investigation
+
+---
+
+### 🚗 Agentic Fleet Maintenance System
+- Predictive maintenance system using telemetry and rule-based diagnostics  
+👉 https://github.com/ravimnm/agentic-fleet-system-maintenance
+👉 https://github.com/ravimnm/secure-backend-api-rbac
 🌱 **Currently learning**  
 - SOC operations and incident response  
 - JVM internals and bytecode instrumentation  
