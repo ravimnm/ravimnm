@@ -17,7 +17,7 @@ I build systems at the intersection of **backend engineering, security, and obse
 - Rate limiting and secure API design
 - Layered architecture (Controller → Service → Repository)
 
-👉 https://github.com/ravimnm/secure-access-control-service
+👉 https://github.com/ravimnm/secure-finance-backend
 
 ---
 
