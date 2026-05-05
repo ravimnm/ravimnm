@@ -6,60 +6,57 @@
 Backend Engineer | Security-Focused Systems Builder
 
 I build systems at the intersection of **backend engineering, security, and observability** — focused on correctness, reliability, and real-world threat handling.
-
+I focus on building systems with strong guarantees around security, consistency, and observability rather than just feature-driven development.
 ---
 
 ## 🚀 Featured Projects
+🚀 Featured Projects
 
-### 🔐 Secure Access Control Service
-- Java 17, Spring Boot 4, MongoDB
-- JWT authentication + role & permission-based access control
-- Rate limiting and secure API design
-- Layered architecture (Controller → Service → Repository)
-
+🧱 Secure Finance Backend (FinTech System)
+Java, Spring Boot, MongoDB
+• Idempotent transaction processing to prevent duplicate operations
+• Immutable audit logging for traceability
+• Fraud detection and rate limiting for abuse prevention
 👉 https://github.com/ravimnm/secure-finance-backend
 
----
-
-### 🛡️ Java Runtime Security Agent (JRSA)
-- JVM bytecode instrumentation for runtime security monitoring
-- Method interception to detect sensitive operations
-- Security logging without modifying application code
-
+🛡️ Java Runtime Security Agent (JRSA)
+Java, ByteBuddy, JVM Instrumentation
+• Runtime bytecode instrumentation to monitor sensitive operations
+• Detection of command execution, reflection misuse, and file access
+• Policy-based response system (detect / simulate / block)
 👉 https://github.com/ravimnm/java_runtime_security_agent
 
----
-
-## 🧠 Other Projects
-
-### 🤖 AI-Based Log Investigation System
-- Log analysis pipeline for anomaly detection
-- Focused on security event investigation workflows  
+🧠 AI-Based Log Investigation Platform
+Python, Scikit-learn, SHAP
+• Multi-source log analysis for anomaly detection
+• ML-based risk scoring using RandomForest and IsolationForest
+• Explainable AI for investigation workflows
 👉 https://github.com/ravimnm/ai_based_log_investigation
 
----
-
-### 🚗 Agentic Fleet Maintenance System
-- Predictive maintenance using telemetry + rule-based diagnostics  
+🤖 Agentic Fleet Intelligence System
+Python, FastAPI, MongoDB
+• Predictive maintenance using telemetry and ML models
+• Modular agent pipeline for diagnostics and decision-making
+• Explainability and audit logging for system decisions
 👉 https://github.com/ravimnm/agentic-fleet-system-maintenance
-
 ---
 
 ## 🛠️ Core Skills
 
-**Backend & Systems**
-- Java, Spring Boot, REST APIs
-- MongoDB, MySQL
-- System design fundamentals
+Backend Engineering:
+Java, Spring Boot, REST API Design, JWT Authentication, RBAC
 
-**Security & Observability**
-- RBAC, JWT authentication
-- SIEM tools (ELK Stack, Splunk)
-- Secure logging and threat analysis
+Systems & Security:
+JVM Instrumentation, Bytecode Manipulation, Runtime Monitoring, Audit Logging
 
-**Tools**
-- Git, Docker, Maven, Postman
+Data & Infrastructure:
+MongoDB, PostgreSQL, Redis
 
+Machine Learning:
+Scikit-learn, RandomForest, IsolationForest, SHAP
+
+Tools:
+Docker, Git, Linux, ELK Stack, Postman
 ---
 
 ## 🌱 Currently Learning
