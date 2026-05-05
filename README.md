@@ -10,53 +10,69 @@ I focus on building systems with strong guarantees around security, consistency,
 ---
 
 ## 🚀 Featured Projects
-🚀 Featured Projects
 
-🧱 Secure Finance Backend (FinTech System)
-Java, Spring Boot, MongoDB
-• Idempotent transaction processing to prevent duplicate operations
-• Immutable audit logging for traceability
-• Fraud detection and rate limiting for abuse prevention
-👉 https://github.com/ravimnm/secure-finance-backend
+### 🧱 Secure Finance Backend (FinTech System)
+**Java, Spring Boot, MongoDB**
+- Designed a secure transaction processing system with **idempotent APIs** to prevent duplicate operations  
+- Implemented **JWT authentication and RBAC** for role-based access control  
+- Built **immutable audit logging** for traceability and compliance  
+- Added **fraud detection and rate limiting** to prevent abuse  
 
-🛡️ Java Runtime Security Agent (JRSA)
-Java, ByteBuddy, JVM Instrumentation
-• Runtime bytecode instrumentation to monitor sensitive operations
-• Detection of command execution, reflection misuse, and file access
-• Policy-based response system (detect / simulate / block)
-👉 https://github.com/ravimnm/java_runtime_security_agent
+🔗 https://github.com/ravimnm/secure_finance_backend
 
-🧠 AI-Based Log Investigation Platform
-Python, Scikit-learn, SHAP
-• Multi-source log analysis for anomaly detection
-• ML-based risk scoring using RandomForest and IsolationForest
-• Explainable AI for investigation workflows
-👉 https://github.com/ravimnm/ai_based_log_investigation
-
-🤖 Agentic Fleet Intelligence System
-Python, FastAPI, MongoDB
-• Predictive maintenance using telemetry and ML models
-• Modular agent pipeline for diagnostics and decision-making
-• Explainability and audit logging for system decisions
-👉 https://github.com/ravimnm/agentic-fleet-system-maintenance
 ---
+
+### 🛡️ Java Runtime Security Agent (JRSA)
+**Java, ByteBuddy, JVM Instrumentation**
+- Built a **Runtime Application Self-Protection (RASP)** agent using JVM instrumentation  
+- Intercepts sensitive operations like command execution, reflection, and file access  
+- Designed **policy-based response system** (detect / simulate / block)  
+- Captures execution context for security analysis  
+
+🔗 https://github.com/ravimnm/java_runtime_security_agent
+
+---
+
+### 🧠 AI-Based Log Investigation Platform
+**Python, Scikit-learn, SHAP**
+- Developed a **multi-source log analysis system** for anomaly detection  
+- Applied **RandomForest and IsolationForest** models for risk scoring  
+- Built **explainable AI pipeline (SHAP)** for investigation insights  
+- Designed workflow aligned with **SOC investigation processes**  
+
+🔗 https://github.com/ravimnm/ai_based_log_investigation
+
+---
+
+### 🚗 Agentic Fleet Intelligence System
+**Python, FastAPI, MongoDB**
+- Built a **predictive maintenance system** using telemetry data and ML models  
+- Designed **modular agent pipeline** for diagnostics, risk scoring, and recommendations  
+- Implemented backend APIs and system-level decision tracking  
+- Added explainability for system outputs  
+
+🔗 https://github.com/ravimnm/agentic-fleet-system-maintenance
+
+---
+
 
 ## 🛠️ Core Skills
 
-Backend Engineering:
-Java, Spring Boot, REST API Design, JWT Authentication, RBAC
+**Backend Engineering**  
+Java, Spring Boot, REST API Design, JWT Authentication, RBAC  
 
-Systems & Security:
-JVM Instrumentation, Bytecode Manipulation, Runtime Monitoring, Audit Logging
+**Systems & Security**  
+JVM Instrumentation, Bytecode Manipulation, Runtime Monitoring, Audit Logging  
 
-Data & Infrastructure:
-MongoDB, PostgreSQL, Redis
+**Data & Infrastructure**  
+MongoDB, PostgreSQL, Redis  
 
-Machine Learning:
-Scikit-learn, RandomForest, IsolationForest, SHAP
+**Machine Learning**  
+Scikit-learn, RandomForest, IsolationForest, SHAP  
 
-Tools:
-Docker, Git, Linux, ELK Stack, Postman
+**Tools**  
+Docker, Git, Linux, ELK Stack, Postman  
+
 ---
 
 ## 🌱 Currently Learning
