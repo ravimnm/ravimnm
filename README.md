@@ -11,6 +11,16 @@ I focus on building systems with strong guarantees around security, consistency,
 
 ## 🚀 Featured Projects
 
+### 🛡️ Secure Multi-Tenant Audit & Compliance Platform (SMTAP)
+**Java, Spring Boot, MongoDB**
+- Designed a multi-tenant audit logging system with **tamper-detection using hash chaining** under a defined threat model  
+- Built deterministic mechanism to detect **database-level log modifications with 100% accuracy**  
+- Achieved **~15–20 ms average write latency** with linear O(n) integrity verification  
+- Identified scalability limitations due to sequential hash dependency and analyzed trade-offs vs parallel structures  
+- Enforced strict trust boundaries by deriving user and tenant context from **JWT instead of client input**  
+
+🔗 https://github.com/ravimnm/audit-compliance-platform
+
 ### 🧱 Secure Finance Backend (FinTech System)
 **Java, Spring Boot, MongoDB**
 - Designed a secure transaction processing system with **idempotent APIs** to prevent duplicate operations  
@@ -86,8 +96,8 @@ Docker, Git, Linux, ELK Stack, Postman
 
 ## 💬 Areas of Interest
 
-- Application Security  
 - Backend System Design  
+- Application Security  
 - JVM Internals  
 - Security Engineering  
 
@@ -107,7 +117,6 @@ I focus on building systems where **security is not an afterthought**, but part 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/ravi-sankar-manem)
 [![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:manemravisankar28@gmail.com)
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/ravi-shan-2005)
 
 ---
 
