@@ -1,12 +1,15 @@
 # 💫 About Me
 
-👋 **About Me**
 # 👋 Ravi Sankar Manem
 
-Backend Engineer | Security-Focused Systems Builder
+**Backend Engineer | Security-Focused Systems Builder**
 
-I build systems at the intersection of **backend engineering, security, and observability** — focused on correctness, reliability, and real-world threat handling.
-I focus on building systems with strong guarantees around security, consistency, and observability rather than just feature-driven development.
+I build systems at the intersection of **backend engineering, security, and observability**, focusing on **correctness, reliability, and real-world threat handling**.
+
+My primary interests include secure backend architecture, runtime security, audit and compliance systems, security analytics, and intelligent systems. I enjoy designing platforms that provide strong guarantees around **security, consistency, auditability, and operational visibility**.
+
+Currently exploring **distributed systems, advanced JVM instrumentation, AI runtime security, and graph-based security analytics**.
+
 ---
 ## 🚀 Featured Engineering Projects
 
