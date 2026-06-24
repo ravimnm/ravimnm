@@ -8,90 +8,148 @@ Backend Engineer | Security-Focused Systems Builder
 I build systems at the intersection of **backend engineering, security, and observability** — focused on correctness, reliability, and real-world threat handling.
 I focus on building systems with strong guarantees around security, consistency, and observability rather than just feature-driven development.
 ---
+## 🚀 Featured Engineering Projects
 
-## 🚀 Featured Projects
+### 🛡️ Secure Multi-Tenant Audit, Compliance & Runtime Security Platform (SMTAP)
 
-### 🛡️ Secure Multi-Tenant Audit & Compliance Platform (SMTAP)
-**Java, Spring Boot, MongoDB**
-- Designed a multi-tenant audit logging system with **tamper-detection using hash chaining** under a defined threat model  
-- Built deterministic mechanism to detect **database-level log modifications with 100% accuracy**  
-- Achieved **~15–20 ms average write latency** with linear O(n) integrity verification  
-- Identified scalability limitations due to sequential hash dependency and analyzed trade-offs vs parallel structures  
-- Enforced strict trust boundaries by deriving user and tenant context from **JWT instead of client input**  
+**Java, Spring Boot, PostgreSQL, Redis, JWT, JVM Instrumentation**
+
+Enterprise-grade audit and compliance platform designed for multi-tenant SaaS and fintech applications.
+
+* Designed tamper-evident audit infrastructure using cryptographic hash chaining under a clearly defined threat model
+* Achieved **~15–20 ms average audit write latency** while maintaining deterministic integrity guarantees
+* Implemented integrity verification with **100% detection accuracy** for database-level log tampering during attack simulations
+* Enforced strict tenant isolation by deriving user and tenant context exclusively from JWT claims
+* Integrated runtime security telemetry to capture sensitive operations including privileged actions and command execution
+* Identified scalability trade-offs introduced by sequential hash dependencies and evaluated alternative parallel verification approaches
 
 🔗 https://github.com/ravimnm/audit-compliance-platform
-
-### 🧱 Secure Finance Backend (FinTech System)
-**Java, Spring Boot, MongoDB**
-- Designed a secure transaction processing system with **idempotent APIs** to prevent duplicate operations  
-- Implemented **JWT authentication and RBAC** for role-based access control  
-- Built **immutable audit logging** for traceability and compliance  
-- Added **fraud detection and rate limiting** to prevent abuse  
-
-🔗 https://github.com/ravimnm/secure_finance_backend
 
 ---
 
 ### 🛡️ Java Runtime Security Agent (JRSA)
-**Java, ByteBuddy, JVM Instrumentation**
-- Built a **Runtime Application Self-Protection (RASP)** agent using JVM instrumentation  
-- Intercepts sensitive operations like command execution, reflection, and file access  
-- Designed **policy-based response system** (detect / simulate / block)  
-- Captures execution context for security analysis  
+
+**Java, ByteBuddy, JVM Instrumentation API**
+
+Runtime Application Self-Protection (RASP) prototype for JVM applications.
+
+* Built runtime instrumentation agent capable of intercepting sensitive operations without modifying application source code
+* Monitored command execution, reflection usage, and file access through bytecode interception
+* Designed configurable policy engine supporting **detect**, **simulate**, and **block** execution modes
+* Explored challenges involving class loading, agent attachment, and JVM instrumentation internals
+* Generated structured runtime telemetry for downstream security analysis and auditing
 
 🔗 https://github.com/ravimnm/java_runtime_security_agent
 
 ---
 
+### 🏦 Secure Finance Backend
+
+**Java, Spring Boot, MongoDB, Redis**
+
+Security-focused financial transaction processing backend.
+
+* Developed idempotent transaction APIs preventing duplicate execution during retries and network failures
+* Implemented JWT authentication and role-based authorization for secure access control
+* Built immutable audit trails to support transaction traceability and compliance workflows
+* Added fraud detection rules, request throttling, and validation safeguards to mitigate abuse
+* Designed layered architecture emphasizing correctness, consistency, and secure transaction processing
+
+🔗 https://github.com/ravimnm/secure-finance-backend
+
+---
+
 ### 🧠 AI-Based Log Investigation Platform
+
 **Python, Scikit-learn, SHAP**
-- Developed a **multi-source log analysis system** for anomaly detection  
-- Applied **RandomForest and IsolationForest** models for risk scoring  
-- Built **explainable AI pipeline (SHAP)** for investigation insights  
-- Designed workflow aligned with **SOC investigation processes**  
+
+Security analytics platform for anomaly detection and investigation.
+
+* Processed multi-source security logs to identify anomalous activity patterns
+* Applied RandomForest and IsolationForest models for behavioral risk scoring
+* Implemented explainable ML pipeline using SHAP to improve investigation transparency
+* Designed workflows aligned with SOC investigation and incident analysis processes
 
 🔗 https://github.com/ravimnm/ai_based_log_investigation
 
 ---
 
 ### 🚗 Agentic Fleet Intelligence System
+
 **Python, FastAPI, MongoDB**
-- Built a **predictive maintenance system** using telemetry data and ML models  
-- Designed **modular agent pipeline** for diagnostics, risk scoring, and recommendations  
-- Implemented backend APIs and system-level decision tracking  
-- Added explainability for system outputs  
+
+AI-driven predictive maintenance and fleet risk assessment platform.
+
+* Designed modular agent pipeline for diagnostics, failure prediction, and recommendation generation
+* Implemented telemetry-driven risk scoring and maintenance decision workflows
+* Built backend APIs supporting explainable operational recommendations
+* Tracked system decisions to improve transparency and maintainability
 
 🔗 https://github.com/ravimnm/agentic-fleet-system-maintenance
 
 ---
 
+### 🌐 WAF Simulator
 
-## 🛠️ Core Skills
+**Java**
 
-**Backend Engineering**  
-Java, Spring Boot, REST API Design, JWT Authentication, RBAC  
+Educational simulation of application-layer request filtering.
 
-**Systems & Security**  
-JVM Instrumentation, Bytecode Manipulation, Runtime Monitoring, Audit Logging  
+* Implemented rule-based inspection engine to identify malicious HTTP payloads
+* Simulated filtering workflows commonly used in Web Application Firewalls
+* Modeled request analysis techniques used in application security systems
 
-**Data & Infrastructure**  
-MongoDB, PostgreSQL, Redis  
-
-**Machine Learning**  
-Scikit-learn, RandomForest, IsolationForest, SHAP  
-
-**Tools**  
-Docker, Git, Linux, ELK Stack, Postman  
+🔗 https://github.com/ravimnm/waf-simulator
 
 ---
 
-## 🌱 Currently Learning
+## 🔬 Research & Next-Generation Systems
 
-- JVM internals & bytecode instrumentation  
-- Secure system design  
-- Scalable log ingestion pipelines  
-- SOC operations & incident response  
+### ARSIX — AI Runtime Security & Intelligence Platform *(In Design)*
 
+Enterprise security platform for monitoring, governing, and securing AI systems.
+
+Planned capabilities:
+
+* Prompt injection detection
+* AI runtime monitoring
+* LLM audit trails
+* Policy enforcement
+* Threat intelligence integration
+* Knowledge graph-based security analytics
+* AI observability and explainability
+
+---
+## 🛠️ Core Skills
+
+### Backend Engineering
+Java, Spring Boot, REST APIs, Spring Security, JWT Authentication, RBAC, JPA/Hibernate
+
+### Systems Engineering
+JVM Internals, JVM Instrumentation, Bytecode Manipulation, Concurrency Fundamentals, Secure System Design
+
+### Security & Observability
+Runtime Monitoring, Audit Logging, Threat Detection, SIEM Fundamentals, ELK Stack, MITRE ATT&CK
+
+### Data & Infrastructure
+PostgreSQL, MongoDB, Redis, Docker, Linux
+
+### Machine Learning
+Scikit-learn, RandomForest, IsolationForest, Feature Engineering, SHAP
+
+### Computer Science Fundamentals
+Data Structures & Algorithms, OOP, DBMS, Operating Systems, Computer Networks
+
+---
+
+## 🌱 Currently Exploring
+
+- Advanced JVM Internals & Instrumentation
+- Distributed Systems & System Design
+- Secure Backend Architecture
+- AI Runtime Security
+- Graph-Based Security Analytics
+- Digital Forensics & Incident Response
 ---
 
 ## 💬 Areas of Interest
@@ -103,6 +161,19 @@ Docker, Git, Linux, ELK Stack, Postman
 
 ---
 
+## 📈 Engineering Focus
+
+I am particularly interested in building systems that provide strong guarantees around:
+
+- Security
+- Auditability
+- Observability
+- Correctness
+- Reliability
+
+I enjoy solving problems at the intersection of backend engineering, security, and intelligent systems.
+
+---
 ## 🌐 Connect
 
 - LinkedIn: https://linkedin.com/in/ravi-sankar-manem  
