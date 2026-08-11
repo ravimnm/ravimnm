@@ -69,7 +69,6 @@ Research-oriented graph learning system for **risk prediction over blockchain tr
 
 - Constructed a heterogeneous graph representing **wallets, transactions, and transaction relationships**.
 - Designed a **Flow Dynamics Representation Module (FDRM)** combining structural, transaction-flow, behavioral, temporal, and connectivity features.
-- Developed an adaptive GraphSAGE architecture with a **feature-wise risk gate** to model varying importance of learned representations.
 - Used neighborhood sampling and class-imbalance-aware training strategies for graph learning.
 - Compared the proposed architecture against a GraphSAGE baseline using accuracy, precision, recall, F1, ROC-AUC, and PR-AUC.
 - Developed an adaptive risk-aware GraphSAGE architecture for illicit-wallet classification, incorporating graph structural, transaction-flow, behavioral, temporal, and connectivity features with neighborhood aggregation and explainability.
