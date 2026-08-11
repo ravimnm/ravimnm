@@ -118,37 +118,15 @@ My work sits at the intersection of:
 I am particularly interested in systems where security properties must be enforced through architecture rather than added as an afterthought.
 
 ---
+## 🛠️ Technologies
 
-# 🛠️ Core Skills
-
-### Backend Engineering
-
-Java, Spring Boot, REST APIs, Spring Security, JWT, Spring Data JPA, Microservices, API Integration, JSON
-
-### Databases
-
-PostgreSQL, MySQL, MongoDB, SQL, Joins, Subqueries, Indexing, Data Validation
-
-### Systems Engineering
-
-JVM Internals, JVM Instrumentation, Bytecode Manipulation, Concurrency, OOP, SOLID Principles, Design Patterns, Debugging, Performance Optimization, Scalability
-
-### Security & Observability
-
-Runtime Security, Audit Logging, Threat Detection, Security Monitoring, SIEM Fundamentals, ELK Stack, MITRE ATT&CK, Secure API Design
-
-### Machine Learning & AI
-
-Scikit-learn, PyTorch, PyTorch Geometric, Random Forest, Isolation Forest, GraphSAGE, GNNExplainer, SHAP, LIME, Feature Engineering
-
-### Infrastructure & Tooling
-
-Linux/Unix, Shell Scripting, Docker, AWS EC2, Maven, Git, GitHub, Postman, JUnit, Mockito, Grafana k6
-
-### Computer Science
-
-Data Structures & Algorithms, OOP, DBMS, Operating Systems, Computer Networks, Collections, Exception Handling, Concurrency, Software Design
-
+**Languages:** Java · Python · SQL · JavaScript  
+**Backend:** Spring Boot · Spring Security · JPA/Hibernate · REST · Microservices  
+**Databases:** PostgreSQL · MySQL · MongoDB  
+**Systems:** Linux · Docker · AWS · JVM Instrumentation · ByteBuddy  
+**Security:** Audit Logging · Runtime Security · ELK · MITRE ATT&CK  
+**ML/AI:** PyTorch · PyTorch Geometric · Scikit-learn · GNNExplainer · SHAP · LIME  
+**Testing & Tooling:** JUnit · Mockito · Maven · Git · Postman · Grafana k6
 ---
 
 # 🔬 Currently Exploring
