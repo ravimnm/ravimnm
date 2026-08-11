@@ -1,13 +1,12 @@
 # 👋 Ravi Sankar Manem
 
-**Backend Engineer | Security & ML Systems**
+**Backend & Security Engineer | Applied ML Research**
 
-I build systems at the intersection of **backend engineering, security, observability, and machine learning**, with a research-oriented approach to system design and threat analysis.
+I build secure backend and security-focused systems, with hands-on work spanning **transaction processing, audit infrastructure, runtime security, and security analytics**.
 
-My work focuses on problems involving **correctness, consistency, auditability, runtime security, anomaly detection, and graph-based learning**. I am particularly interested in understanding systems at both the implementation and research levels — from JVM instrumentation and distributed transaction processing to security telemetry and graph neural networks.
+My engineering work focuses on **correctness, consistency, observability, and threat detection**, while my research interests include **graph-based machine learning and intelligent security systems**.
 
-Currently exploring **distributed systems, advanced JVM instrumentation, security analytics, graph-based learning, and AI runtime security**.
-
+Currently exploring **distributed systems, JVM instrumentation, graph neural networks, and AI security**.
 ---
 
 ## 🔬 Featured Engineering & Research Projects
@@ -73,7 +72,8 @@ Research-oriented graph learning system for **risk prediction over blockchain tr
 - Developed an adaptive GraphSAGE architecture with a **feature-wise risk gate** to model varying importance of learned representations.
 - Used neighborhood sampling and class-imbalance-aware training strategies for graph learning.
 - Compared the proposed architecture against a GraphSAGE baseline using accuracy, precision, recall, F1, ROC-AUC, and PR-AUC.
-- Achieved **99.69% accuracy, 99.70% F1, and 99.99% ROC-AUC** on the reported test evaluation.
+- Developed an adaptive risk-aware GraphSAGE architecture for illicit-wallet classification, incorporating graph structural, transaction-flow, behavioral, temporal, and connectivity features with neighborhood aggregation and explainability.
+- Evaluated the model against a GraphSAGE baseline using precision, recall, F1, ROC-AUC, and PR-AUC, with earlier experiments achieving 90%+ F1 under the evaluated split.
 - Applied **GNNExplainer** to identify influential neighbor wallets, transaction edges, and subgraphs contributing to wallet-risk predictions.
 - Framed explainability as part of the model evaluation rather than treating it as a separate visualization layer.
 
@@ -194,10 +194,13 @@ I regularly practice algorithmic problem solving, with a focus on **data structu
 ## 📊 GitHub
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ravimnm&show_icons=true&hide_border=true&theme=transparent" height="165">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ravimnm&layout=compact&hide_border=true&theme=transparent" height="165">
+  <a href="https://github.com/ravimnm">
+    <img src="https://img.shields.io/github/followers/ravimnm?style=flat&label=Followers">
+  </a>
+  <a href="https://github.com/ravimnm?tab=repositories">
+    <img src="https://img.shields.io/badge/Public%20Repositories-15-blue?style=flat">
+  </a>
 </p>
-
 ---
 
 ## 🌐 Connect
