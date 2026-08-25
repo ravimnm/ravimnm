@@ -11,24 +11,31 @@ Currently exploring **distributed systems, JVM instrumentation, graph neural net
 
 ## 🔬 Featured Engineering & Research Projects
 
-### 1. 💳 FinCore — Payment Processing Platform
+### 1. 💳 FinCore — Secure Payment Processing Platform
 
-**Java 21 · Spring Boot 4 · Spring Security · PostgreSQL · Redis · JPA · Grafana k6**
+**Java 21 · Spring Boot 4 · Spring Security · PostgreSQL · Redis · JPA · Razorpay · Grafana k6**
 
-A secure payment-processing backend designed around **transaction correctness, idempotency, concurrency control, and consistency**.
+A secure payment-processing backend designed around **transaction correctness, idempotency, concurrency control, auditability, and external payment-gateway integration**.
 
-- Designed a Spring Boot microservices architecture separating **authentication, payment processing, and wallet management**.
-- Implemented **idempotency controls** to prevent duplicate payment execution during retries and repeated requests.
-- Used **pessimistic locking** and consistent wallet-lock ordering to control concurrent balance updates.
-- Implemented transactional payment processing with **atomic debit/credit operations and rollback on failure**.
-- Added JWT-based authentication, role-based access control, validation, rate limiting, and structured error handling.
-- Designed a **double-entry-style payment ledger** for transaction traceability.
-- Load-tested the system with **up to 1,000 virtual users**, processing **36K+ requests** with **0% HTTP failures** in the reported test run.
+- Designed a modular Spring Boot backend separating **authentication, wallet management, payment processing, ledger management, and gateway integration**.
+- Implemented **JWT authentication and role-based access control** with request validation and rate limiting.
+- Implemented **idempotent payment processing** to prevent duplicate transactions during retries and repeated client requests.
+- Used **pessimistic wallet locking with deterministic lock ordering** to maintain balance consistency under concurrent transfers and reduce deadlock risk.
+- Implemented transactional **atomic debit/credit operations with rollback on failure**.
+- Built a **double-entry-style ledger** for payment traceability and balance-change auditing.
+- Integrated **Razorpay Test Mode** for external wallet funding through server-side order creation and payment verification.
+- Implemented **Razorpay signature verification using HMAC-SHA256** before accepting externally initiated payments.
+- Added persistent **gateway transaction tracking** for Razorpay order IDs, payment IDs, idempotency keys, wallet associations, amounts, currencies, statuses, and completion timestamps.
+- Added gateway-level **idempotency handling** so repeated order requests with the same idempotency key return the existing gateway transaction instead of creating another order.
+- Load-tested internal wallet-to-wallet payment processing with **up to 1,000 virtual users**, validating concurrency, transaction consistency, and failure handling.
+- Load-tested Razorpay order creation using **Grafana k6**, successfully completing **999 order-creation requests at 2 requests/second with 0% HTTP failures** and **256.87 ms P95 latency**.
+- Tested gateway behavior under higher request rates and observed **Razorpay API rate limiting (HTTP 429)**, confirming that external gateway limits become a bottleneck before the local application layer.
+- Designed the system so **internal wallet transfers and external gateway funding remain separate payment flows**, while sharing common transaction, idempotency, and persistence infrastructure.
 
 **Repository:** [fincore-payment-platform](https://github.com/ravimnm/fincore-payment-platform)
 
 <p align="center">
-  <img src="./assets/fincore-architecture.png" alt="FinCore Payment Processing Platform Architecture" width="100%">
+  <img src="./assets/fincore-architecture.png" alt="FinCore Secure Payment Processing Platform Architecture" width="100%">
 </p>
 
 ---
