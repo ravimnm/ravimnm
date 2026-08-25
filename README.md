@@ -35,7 +35,7 @@ A secure payment-processing backend designed around **transaction correctness, i
 **Repository:** [fincore-payment-platform](https://github.com/ravimnm/fincore-payment-platform)
 
 <p align="center">
-  <img src="./assets/fincore-architecture.png" alt="FinCore Secure Payment Processing Platform Architecture" width="100%">
+  <img src="./assets/FinCore_arc.png" alt="FinCore Secure Payment Processing Platform Architecture" width="100%">
 </p>
 
 ---
