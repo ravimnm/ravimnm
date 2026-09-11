@@ -40,7 +40,27 @@ A secure payment-processing backend designed around **transaction correctness, i
 
 ---
 
-### 2. 🛡️ Secure Multi-Tenant Audit Platform — SMTAP
+### 2. 📚 Research Retrieval & Reasoning Engine — Hybrid RAG & Scholarly Discovery Platform
+
+**Java 21 · Spring Boot 4 · React · Python · FastAPI · FAISS · BM25 · Cross-Encoder Reranking · Groq · PostgreSQL**
+
+A full-stack AI research intelligence platform combining hybrid information retrieval, semantic search, Retrieval-Augmented Generation, and external scholarly research discovery across a three-layer architecture.
+
+- Designed a three-tier system separating a **React frontend, a Spring Boot REST API, and a Python FastAPI AI engine**, with the frontend communicating only through Spring Boot to keep application and AI concerns cleanly bounded.
+- Built a **hybrid retrieval pipeline** combining FAISS-based dense semantic search (`BAAI/bge-small-en-v1.5`) with **BM25 lexical retrieval**, fused using **Reciprocal Rank Fusion** so exact terminology and semantic similarity are both first-class retrieval signals.
+- Added a **cross-encoder reranking stage** on top of RRF, turning fast candidate retrieval into a precise two-stage retrieval architecture (fast candidate generation → expensive, accurate reranking on a small candidate set).
+- Implemented **token-aware PDF chunking** (400-token chunks, 80-token overlap) via PyMuPDF to preserve contextual continuity across chunk boundaries.
+- Built a **provenance-aware RAG pipeline** that returns chunk-level evidence — chunk ID, page, fusion score, and rerank score — alongside every generated answer, so retrieved evidence is inspectable rather than opaque.
+- Designed a **research discovery pipeline** where an LLM generates multiple scholarly search queries from an uploaded paper, retrieves candidates from **OpenAlex and arXiv**, deduplicates overlapping results, and reranks them using embedding similarity plus cross-encoder scoring.
+- Added an **LLM-based relationship analysis stage** that explains how a source paper relates to discovered research across problem, methodology, and technical approach, turning search results into research intelligence.
+- Built the backend with a layered **Controller → Service → Repository/AI Client** architecture in Spring Boot, persisting paper metadata (title, authors, abstract, source, file path) in PostgreSQL via Spring Data JPA/Hibernate.
+- Independently evaluated the retrieval system with standard IR metrics — **Recall@5, MRR, and NDCG@5** — rather than judging the system only on how the final generated answer "looks."
+
+**Repository:** [research-paper-retrieval-reasoning-engine](https://github.com/ravimnm/research-paper-retrieval-reasoning-engine)
+
+---
+
+### 3. 🛡️ Secure Multi-Tenant Audit Platform — SMTAP
 
 **Java · Spring Boot · Angular · PostgreSQL · JWT · Docker · Microservices**
 
@@ -68,7 +88,7 @@ A security-focused audit and compliance platform designed for **multi-tenant env
 
 ---
 
-### 3. 🧠 Adaptive Risk-aware GraphSAGE — Blockchain Wallet Risk Prediction
+### 4. 🧠 Adaptive Risk-aware GraphSAGE — Blockchain Wallet Risk Prediction
 
 **Python · PyTorch · PyTorch Geometric · GraphSAGE · GNNExplainer · scikit-learn**
 
@@ -91,7 +111,7 @@ Research-oriented graph learning system for **risk prediction over blockchain tr
 
 ---
 
-### 4. 🔍 AI-Based Log Investigation Platform
+### 5. 🔍 AI-Based Log Investigation Platform
 
 **Python · Scikit-learn · Random Forest · Isolation Forest · SHAP · LIME**
 
@@ -114,7 +134,7 @@ Research-oriented **multi-source security-log analytics pipeline**, with end-to-
 
 ---
 
-### 5. ⚙️ Java Runtime Security Agent — JRSA
+### 6. ⚙️ Java Runtime Security Agent — JRSA
 
 **Java · JVM Instrumentation API · ByteBuddy · Bytecode Manipulation**
 
@@ -149,6 +169,7 @@ I am particularly interested in problems where **systems engineering and securit
 - Secure distributed backend systems
 - Digital forensics and incident response
 - AI runtime security and intelligent security systems
+- Hybrid information retrieval and retrieval-augmented generation
 
 ---
 
@@ -166,6 +187,9 @@ I am particularly interested in problems where **systems engineering and securit
 ### Machine Learning & Research
 **Python · Scikit-learn · PyTorch · PyTorch Geometric · GraphSAGE · Random Forest · Isolation Forest · SHAP · LIME · GNNExplainer · Feature Engineering**
 
+### Information Retrieval & GenAI
+**FAISS · BM25 · Reciprocal Rank Fusion · Cross-Encoder Reranking · Sentence Transformers · Retrieval-Augmented Generation · FastAPI · Groq**
+
 ### Computer Science
 **Data Structures & Algorithms · OOP · DBMS · Operating Systems · Computer Networks · Concurrency · Distributed Systems Fundamentals**
 
@@ -180,6 +204,7 @@ I am particularly interested in problems where **systems engineering and securit
 - AI runtime security
 - Explainable AI for security systems
 - Scalable backend architecture
+- Hybrid retrieval and multi-paper research indexing
 
 ---
 
