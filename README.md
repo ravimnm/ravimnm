@@ -58,6 +58,9 @@ A full-stack AI research intelligence platform combining hybrid information retr
 
 **Repository:** [research-paper-retrieval-reasoning-engine](https://github.com/ravimnm/research-paper-retrieval-reasoning-engine)
 
+<p align="center">
+  <img src="./assets/rrre_arc.png" alt="Research Paper & Retrieval Engine Architecture" width="100%">
+</p>
 ---
 
 ### 3. 🛡️ Secure Multi-Tenant Audit Platform — SMTAP
