@@ -1,249 +1,198 @@
 # 👋 Ravi Sankar Manem
 
-**Backend & Security Engineer | Applied ML Research**
+**Backend Engineer · Security & Applied AI**
 
-I build secure backend and security-focused systems, with hands-on work spanning **transaction processing, audit infrastructure, runtime security, and security analytics**.
+Final-year B.Tech CSE student at RGUKT Nuzvid (graduating May 2027, CGPA 8.45). I build backend systems where **correctness, auditability and observability** are part of the architecture: payment processing, tamper-evident audit infrastructure, JVM runtime security, and retrieval-augmented AI systems.
 
-My engineering work focuses on **correctness, consistency, observability, and threat detection**, while my research interests include **graph-based machine learning and intelligent security systems**.
+Currently exploring distributed systems, JVM instrumentation, graph neural networks and AI security.
 
-Currently exploring **distributed systems, JVM instrumentation, graph neural networks, and AI security**.
+📫 [LinkedIn](https://linkedin.com/in/ravi-sankar-manem) · [LeetCode](https://leetcode.com/u/ravimnm28/) · `manemravisankar28@gmail.com`
+
 ---
 
-## 🔬 Featured Engineering & Research Projects
+## 🌍 Open Source — NASA Planetary Data System
+
+Merged contributions to [NASA-PDS/validate](https://github.com/NASA-PDS/validate), the Java tool NASA uses to validate PDS4 planetary-science data labels and products.
+
+- **[#1683](https://github.com/NASA-PDS/validate/pull/1683) — Fixed a concurrency bug in the `ValidationTarget` cache** ([issue #1621](https://github.com/NASA-PDS/validate/issues/1621)). The cache was a `public static HashMap` with an unsynchronized check-then-act sequence, so two threads could race and overwrite each other. I made it private, replaced the check-then-act with `ConcurrentHashMap.computeIfAbsent`, and added regression tests for instance reuse and concurrent access. Shipped in [validate v5.0.0](https://github.com/NASA-PDS/validate/releases/tag/v5.0.0). Maintainer review of this PR also surfaced a separate, older cache-key bug, tracked in [#1684](https://github.com/NASA-PDS/validate/issues/1684).
+- **[#1710](https://github.com/NASA-PDS/validate/pull/1710) — Removed an unused mutable-list getter**, shrinking the class's mutable surface.
+
+---
+
+## 🔬 Projects at a Glance
+
+| Project | What it is | Stack | Highlight |
+|---|---|---|---|
+| [**FinCore**](#1--fincore--secure-payment-processing-platform) | Payment backend with wallets, ledger and Razorpay funding | Java 21, Spring Boot 4, PostgreSQL | 50,682 requests at up to 1,000 VUs, 0 failures (local) |
+| [**SMTAP**](#2--smtap--secure-multi-tenant-audit-platform) | Multi-tenant audit platform with tamper-evident logs | Spring Boot, Angular, PostgreSQL | SHA-256 hash chain, 0.05 ms indexed audit query |
+| [**Research Retrieval Engine**](#3--research-retrieval--reasoning-engine) | Hybrid RAG + scholarly discovery | Spring Boot, React, FastAPI, FAISS | BM25 + dense + RRF + cross-encoder reranking |
+| [**ARP-GraphSAGE**](#4--adaptive-risk-aware-graphsage) | Illicit Bitcoin wallet detection with GNNs | PyTorch Geometric | 99.70 F1 vs 82.34 for GraphSAGE baseline (Elliptic++) |
+| [**AI Log Investigation**](#5--ai-based-log-investigation) | ML triage of Windows security logs | scikit-learn, SHAP, Gradio | Anomaly detection + explainable risk scoring |
+| [**JRSA**](#6--jrsa--java-runtime-security-agent) | In-JVM runtime security agent | Java, ByteBuddy | ~102 events/s, ~9.7% startup overhead |
+
+---
 
 ### 1. 💳 FinCore — Secure Payment Processing Platform
 
-**Java 21 · Spring Boot 4 · Spring Security · PostgreSQL · Redis · JPA · Razorpay · Grafana k6**
+**Java 21 · Spring Boot 4 · Spring Security · PostgreSQL · JPA · Razorpay · Docker · GitHub Actions · Grafana k6**
 
-A secure payment-processing backend designed around **transaction correctness, idempotency, concurrency control, auditability, and external payment-gateway integration**.
+A payment backend built around transaction correctness, idempotency and concurrency control, with two separate money-movement paths: internal wallet-to-wallet transfers and external wallet funding through Razorpay.
 
-- Designed a modular Spring Boot backend separating **authentication, wallet management, payment processing, ledger management, and gateway integration**.
-- Implemented **JWT authentication and role-based access control** with request validation and rate limiting.
-- Implemented **idempotent payment processing** to prevent duplicate transactions during retries and repeated client requests.
-- Used **pessimistic wallet locking with deterministic lock ordering** to maintain balance consistency under concurrent transfers and reduce deadlock risk.
-- Implemented transactional **atomic debit/credit operations with rollback on failure**.
-- Built a **double-entry-style ledger** for payment traceability and balance-change auditing.
-- Integrated **Razorpay Test Mode** for external wallet funding through server-side order creation and payment verification.
-- Implemented **Razorpay signature verification using HMAC-SHA256** before accepting externally initiated payments.
-- Added persistent **gateway transaction tracking** for Razorpay order IDs, payment IDs, idempotency keys, wallet associations, amounts, currencies, statuses, and completion timestamps.
-- Added gateway-level **idempotency handling** so repeated order requests with the same idempotency key return the existing gateway transaction instead of creating another order.
-- Load-tested internal wallet-to-wallet payment processing with **up to 1,000 virtual users**, validating concurrency, transaction consistency, and failure handling.
-- Load-tested Razorpay order creation using **Grafana k6**, successfully completing **999 order-creation requests at 2 requests/second with 0% HTTP failures** and **256.87 ms P95 latency**.
-- Tested gateway behavior under higher request rates and observed **Razorpay API rate limiting (HTTP 429)**, confirming that external gateway limits become a bottleneck before the local application layer.
-- Designed the system so **internal wallet transfers and external gateway funding remain separate payment flows**, while sharing common transaction, idempotency, and persistence infrastructure.
+- JWT authentication and role-based access control, with modular separation of auth, wallets, payments, ledger and gateway integration.
+- **Idempotent payments** so client retries never create duplicate transactions.
+- **Pessimistic wallet locking with deterministic lock ordering** to keep balances consistent under concurrent transfers and avoid deadlocks; atomic debit/credit with rollback.
+- **Double-entry-style ledger** for traceability and balance auditing.
+- **Razorpay integration** (Test Mode): server-side order creation, HMAC-SHA256 signature verification before any wallet credit, persistent gateway-transaction tracking and gateway-level idempotency.
+- **Benchmarks (local):** the internal transfer path handled 50,682 requests at up to 1,000 virtual users with 0 failures (281.56 req/s). Razorpay order creation completed 999/999 requests at a controlled 2 req/s with 256.87 ms P95. Pushing harder returned HTTP 429s from Razorpay, which showed the external gateway, not the app, was the bottleneck.
+- Containerized and deployed with a **GitHub Actions → Docker → GitHub Container Registry → Render** pipeline.
 
-**Repository:** [fincore-payment-platform](https://github.com/ravimnm/fincore-payment-platform)
+**[Repository](https://github.com/ravimnm/fincore-payment-platform)** · **[Live API](https://fincore-aeg6.onrender.com)**
 
-<p align="center">
-  <img src="./assets/FinCore_arc.png" alt="FinCore Secure Payment Processing Platform Architecture" width="100%">
-</p>
+<details>
+<summary>Architecture</summary>
+<p align="center"><img src="./assets/FinCore_arc.png" alt="FinCore architecture" width="100%"></p>
+</details>
 
 ---
 
-### 2. 📚 Research Retrieval & Reasoning Engine — Hybrid RAG & Scholarly Discovery Platform
+### 2. 🛡️ SMTAP — Secure Multi-Tenant Audit Platform
 
-**Java 21 · Spring Boot 4 · React · Python · FastAPI · FAISS · BM25 · Cross-Encoder Reranking · Groq · PostgreSQL**
+**Java 21 · Spring Boot · Spring Cloud Gateway · Angular 20 · PostgreSQL · JWT · Docker Compose**
 
-A full-stack AI research intelligence platform combining hybrid information retrieval, semantic search, Retrieval-Augmented Generation, and external scholarly research discovery across a three-layer architecture.
+A microservices audit and compliance platform (auth, audit, security and agent services behind an API gateway) for multi-tenant environments that need tamper-evident trails.
 
-- Designed a three-tier system separating a **React frontend, a Spring Boot REST API, and a Python FastAPI AI engine**, with the frontend communicating only through Spring Boot to keep application and AI concerns cleanly bounded.
-- Built a **hybrid retrieval pipeline** combining FAISS-based dense semantic search (`BAAI/bge-small-en-v1.5`) with **BM25 lexical retrieval**, fused using **Reciprocal Rank Fusion** so exact terminology and semantic similarity are both first-class retrieval signals.
-- Added a **cross-encoder reranking stage** on top of RRF, turning fast candidate retrieval into a precise two-stage retrieval architecture (fast candidate generation → expensive, accurate reranking on a small candidate set).
-- Implemented **token-aware PDF chunking** (400-token chunks, 80-token overlap) via PyMuPDF to preserve contextual continuity across chunk boundaries.
-- Built a **provenance-aware RAG pipeline** that returns chunk-level evidence — chunk ID, page, fusion score, and rerank score — alongside every generated answer, so retrieved evidence is inspectable rather than opaque.
-- Designed a **research discovery pipeline** where an LLM generates multiple scholarly search queries from an uploaded paper, retrieves candidates from **OpenAlex and arXiv**, deduplicates overlapping results, and reranks them using embedding similarity plus cross-encoder scoring.
-- Added an **LLM-based relationship analysis stage** that explains how a source paper relates to discovered research across problem, methodology, and technical approach, turning search results into research intelligence.
-- Built the backend with a layered **Controller → Service → Repository/AI Client** architecture in Spring Boot, persisting paper metadata (title, authors, abstract, source, file path) in PostgreSQL via Spring Data JPA/Hibernate.
-- Independently evaluated the retrieval system with standard IR metrics — **Recall@5, MRR, and NDCG@5** — rather than judging the system only on how the final generated answer "looks."
+- **SHA-256 hash-chained audit logs** with an integrity-verification engine and an integrity anchor to detect chain-rewrite attacks; integrity checks caught 100% of simulated database-level tampering.
+- Tenant-aware authorization from JWT identity and tenant context.
+- Investigation timelines (per user, tenant and device) correlating audit and security events.
+- Agent service for ingesting application, Windows, Linux, Nginx and Apache logs.
+- **Performance:** ~18 ms audit-write latency; 0.05 ms indexed audit query using a composite `(tenant_id, timestamp)` index confirmed by execution plans. A 1,000-user k6 stress test peaked at 316 req/s and exposed saturation (95% success, 3.76 s P95), which gives a baseline for scaling work.
 
-**Repository:** [research-paper-retrieval-reasoning-engine](https://github.com/ravimnm/research-paper-retrieval-reasoning-engine)
+**[Repository](https://github.com/ravimnm/secure-multi-tenant-audit-platform)**
 
-<p align="center">
-  <img src="./assets/rrre_arc.png" alt="Research Paper & Retrieval Engine Architecture" width="100%">
-</p>
----
-
-### 3. 🛡️ Secure Multi-Tenant Audit Platform — SMTAP
-
-**Java · Spring Boot · Angular · PostgreSQL · JWT · Docker · Microservices**
-
-A security-focused audit and compliance platform designed for **multi-tenant environments requiring tamper-evident audit trails and runtime security visibility**.
-
-- Designed a multi-service architecture covering **authentication, audit management, and security monitoring**.
-- Built tamper-evident audit storage using **SHA-256 hash chaining** under a defined database/log-tampering threat model.
-- Achieved approximately **15–20 ms average audit-write latency** in testing.
-- Implemented integrity verification that detected **100% of simulated database-level audit-log tampering**.
-- Enforced tenant-aware authorization using JWT-derived identity and tenant context.
-- Built an investigation timeline to correlate audit and security events for incident analysis.
-- Added runtime security telemetry and alert generation for sensitive application operations.
-- Designed an ingestion path for application, Windows, Linux, Nginx, and Apache logs through the SMTAP Agent.
-- Documented deployment architecture using Docker Compose with Kubernetes as a future deployment target.
-
-**Repository:** [secure-multi-tenant-audit-platform](https://github.com/ravimnm/secure-multi-tenant-audit-platform)
-
-<p align="center">
-  <img src="./assets/smtap-dashboard.png" alt="SMTAP Security and Audit Dashboard" width="100%">
-</p>
-
-<p align="center">
-  <img src="./assets/smtap-architecture.jpg" alt="SMTAP System Architecture" width="100%">
-</p>
+<details>
+<summary>Dashboard & architecture</summary>
+<p align="center"><img src="./assets/smtap-dashboard.png" alt="SMTAP dashboard" width="100%"></p>
+<p align="center"><img src="./assets/smtap-architecture.jpg" alt="SMTAP architecture" width="100%"></p>
+</details>
 
 ---
 
-### 4. 🧠 Adaptive Risk-aware GraphSAGE — Blockchain Wallet Risk Prediction
+### 3. 📚 Research Retrieval & Reasoning Engine
 
-**Python · PyTorch · PyTorch Geometric · GraphSAGE · GNNExplainer · scikit-learn**
+**Java 21 · Spring Boot 4 · React · Python · FastAPI · FAISS · BM25 · Cross-Encoder · Groq · PostgreSQL**
 
-Research-oriented graph learning system for **risk prediction over blockchain transaction networks**.
+Upload research papers, ask grounded questions, and discover related work from scholarly sources.
 
-- Constructed a heterogeneous graph representing **wallets, transactions, and transaction relationships**.
-- Designed a **Flow Dynamics Representation Module (FDRM)** combining structural, transaction-flow, behavioral, temporal, and connectivity features.
-- Used neighborhood sampling and class-imbalance-aware training strategies for graph learning.
-- Compared the proposed architecture against a GraphSAGE baseline using accuracy, precision, recall, F1, ROC-AUC, and PR-AUC.
-- Developed an adaptive risk-aware GraphSAGE architecture for illicit-wallet classification, incorporating graph structural, transaction-flow, behavioral, temporal, and connectivity features with neighborhood aggregation and explainability.
-- Evaluated the model against a GraphSAGE baseline using precision, recall, F1, ROC-AUC, and PR-AUC, with earlier experiments achieving 90%+ F1 under the evaluated split.
-- Applied **GNNExplainer** to identify influential neighbor wallets, transaction edges, and subgraphs contributing to wallet-risk predictions.
-- Framed explainability as part of the model evaluation rather than treating it as a separate visualization layer.
+- Three-tier design: React frontend → Spring Boot API → Python FastAPI AI engine.
+- **Hybrid retrieval:** FAISS dense search (`BAAI/bge-small-en-v1.5`) plus BM25, fused with Reciprocal Rank Fusion, then **cross-encoder reranking**.
+- Token-aware PDF chunking (400 tokens, 80 overlap) and **provenance-aware answers** that return chunk ID, page, fusion and rerank scores with every response.
+- **Research discovery:** an LLM generates search queries from an uploaded paper, pulls candidates from OpenAlex and arXiv, deduplicates, reranks, and explains how each result relates to the source paper.
+- Evaluated with Recall@5, MRR and NDCG@5 (all 1.00 on a small hand-annotated set, which I treat as a sanity check, not a benchmark).
 
-**Repository:** [blockchain-wallet-risk-prediction](https://github.com/ravimnm/blockchain-wallet-risk-prediction)
+**[Repository](https://github.com/ravimnm/research-paper-retrieval-reasoning-engine)**
 
-<p align="center">
-  <img src="./assets/blockchain-architecture.png" alt="Adaptive Risk-aware GraphSAGE Architecture" width="100%">
-</p>
+<details>
+<summary>Architecture</summary>
+<p align="center"><img src="./assets/rrre_arc.png" alt="RRRE architecture" width="100%"></p>
+</details>
 
 ---
 
-### 5. 🔍 AI-Based Log Investigation Platform
+### 4. 🧠 Adaptive Risk-aware GraphSAGE
 
-**Python · Scikit-learn · Random Forest · Isolation Forest · SHAP · LIME**
+**Python · PyTorch · PyTorch Geometric · GNNExplainer · scikit-learn**
 
-Research-oriented **multi-source security-log analytics pipeline**, with end-to-end work on the **Windows Security Log ML pipeline**.
+Graph learning for detecting illicit wallets in Bitcoin transaction networks (Elliptic++ dataset). Academic team project; I built the feature engineering, model, training and explainability pipeline.
 
-- Worked end-to-end on the Windows pipeline, from **log ingestion and preprocessing to feature engineering, model training, risk scoring, and investigation outputs**.
-- Processed Windows security telemetry alongside other security-log sources for anomaly and threat analysis.
-- Engineered behavioral features for identifying unusual activity patterns, including event frequency, rarity, burst activity, privilege-related behavior, and temporal activity.
-- Used **Isolation Forest** for unsupervised anomaly detection and **Random Forest** for supervised risk classification.
-- Built a risk-scoring workflow to prioritize suspicious security events for investigation.
-- Applied **SHAP/LIME-based explainability** to identify features contributing to model decisions.
-- Designed the workflow around SOC investigation concepts including anomaly triage, behavioral analysis, explainability, and evidence generation.
-- Explored ensemble-based adjudication and human-readable investigation narratives for higher-confidence analysis.
+- **Flow Dynamics Representation Module (FDRM):** engineered structural, transaction-flow, behavioral, temporal and connectivity features plus a composite flow-risk score.
+- **Adaptive risk gate** (learned feature-wise gating), residual connections, L2-normalized embeddings, focal loss for class imbalance, neighbor sampling and mixed-precision training.
+- Compared against GCN, GAT and GraphSAGE baselines:
 
-**Repository:** [ai_based_log_investigation](https://github.com/ravimnm/ai_based_log_investigation)
+| Model | Accuracy | F1 |
+|---|---|---|
+| GCN | 40.62 | 43.83 |
+| GAT | 70.76 | 51.06 |
+| GraphSAGE | 85.82 | 82.34 |
+| **ARP-GraphSAGE** | **99.69** | **99.70** |
 
-<p align="center">
-  <img src="./assets/ai-log-investigation-architecture.png" alt="AI Cyber-Forensic Command Center Architecture" width="100%">
-</p>
+- **GNNExplainer** to surface influential neighbor wallets, edges and subgraphs behind each prediction.
 
----
+**[Repository](https://github.com/ravimnm/blockchain-wallet-risk-prediction)**
 
-### 6. ⚙️ Java Runtime Security Agent — JRSA
-
-**Java · JVM Instrumentation API · ByteBuddy · Bytecode Manipulation**
-
-A JVM-level runtime security agent for **observing and detecting security-sensitive application behavior without modifying application source code**.
-
-- Built a Java agent using the **JVM Instrumentation API and ByteBuddy**.
-- Intercepted sensitive runtime operations such as `Runtime.exec()` through bytecode instrumentation.
-- Designed runtime hooks to capture execution context and generate structured security events.
-- Explored agent lifecycle, class loading, bytecode transformation, and JVM instrumentation internals.
-- Implemented policy-oriented runtime monitoring with **detect, simulate, and block** execution modes.
-- Designed the telemetry path for forwarding runtime security events to downstream audit and investigation systems.
-- Validated the agent by instrumenting a running Java application and observing command-execution events at runtime.
-
-**Repository:** [java_runtime_security_agent](https://github.com/ravimnm/java_runtime_security_agent)
-
-<p align="center">
-  <img src="./assets/jrsa-architecture.jpg" alt="JRSA Java Runtime Security Agent Architecture" width="520">
-</p>
+<details>
+<summary>Architecture</summary>
+<p align="center"><img src="./assets/blockchain-architecture.png" alt="ARP-GraphSAGE architecture" width="100%"></p>
+</details>
 
 ---
 
-## 🧪 Research & Engineering Focus
+### 5. 🔍 AI-Based Log Investigation
 
-I am particularly interested in problems where **systems engineering and security research overlap**:
+**Python · scikit-learn · Isolation Forest · Random Forest · SHAP · LIME · Gradio**
 
-- Security telemetry and behavioral detection
-- Windows and multi-source security-log analysis
-- Explainable machine learning for security investigations
-- Graph neural networks for threat/risk prediction
-- JVM internals and runtime instrumentation
-- Tamper-evident audit infrastructure
-- Secure distributed backend systems
-- Digital forensics and incident response
-- AI runtime security and intelligent security systems
-- Hybrid information retrieval and retrieval-augmented generation
+An ML pipeline that helps SOC analysts triage Windows security logs, from ingestion to investigation output.
+
+- Behavioral feature engineering: event frequency, rarity, burst activity, privilege-related behavior and temporal patterns.
+- **Isolation Forest** for unsupervised anomaly detection, **Random Forest** for supervised risk classification, and a risk-scoring workflow that prioritizes events for investigation.
+- **SHAP/LIME explanations** for why an event was flagged; Gradio interface for uploading logs and reviewing flagged entries.
+
+**[Repository](https://github.com/ravimnm/ai_based_log_investigation)**
+
+<details>
+<summary>Architecture</summary>
+<p align="center"><img src="./assets/ai-log-investigation-architecture.png" alt="Log investigation architecture" width="100%"></p>
+</details>
+
+---
+
+### 6. ⚙️ JRSA — Java Runtime Security Agent
+
+**Java 17 · Java Instrumentation API · ByteBuddy · Spring Boot · PostgreSQL**
+
+An in-process agent (`-javaagent`) that watches security-sensitive behavior inside a running JVM, with no changes to the application's source code.
+
+- ByteBuddy interceptors for **process execution** (`Runtime.exec`, `ProcessBuilder`) and **reflection abuse**.
+- Rule engine with regex/command pattern matching, frequency analysis and 0–100 **risk scoring** (for example, encoded PowerShell scores high).
+- Streams structured security events to **SMTAP**, so runtime telemetry lands in the tamper-evident audit store.
+- **Benchmarks (Windows 10):** ~102 events/s, ~32.6 ms average event-processing latency, ~9.7% startup overhead, ~23.5 MB extra memory.
+
+**[Repository](https://github.com/ravimnm/java-runtime-security-agent)**
+
+<details>
+<summary>Architecture</summary>
+<p align="center"><img src="./assets/jrsa-architecture.jpg" alt="JRSA architecture" width="520"></p>
+</details>
 
 ---
 
 ## 🛠️ Technical Skills
 
-### Backend & Systems
-**Java · Spring Boot · Spring Security · REST APIs · JPA/Hibernate · Microservices · JVM Internals · JVM Instrumentation · ByteBuddy**
+**Backend & Systems:** Java · Spring Boot · Spring Security · REST APIs · JPA/Hibernate · Microservices · JVM Instrumentation · ByteBuddy
 
-### Databases & Infrastructure
-**PostgreSQL · MongoDB · Redis · Docker · Linux · AWS · Maven**
+**Databases & Infrastructure:** PostgreSQL · MongoDB · Redis · Docker · GitHub Actions · Linux · Maven
 
-### Security & Observability
-**JWT · RBAC · Audit Logging · Runtime Monitoring · Threat Detection · ELK Stack · MITRE ATT&CK · Security Telemetry**
+**Security & Observability:** JWT · RBAC · Audit Logging · Runtime Monitoring · Threat Detection · ELK Stack · Security Telemetry
 
-### Machine Learning & Research
-**Python · Scikit-learn · PyTorch · PyTorch Geometric · GraphSAGE · Random Forest · Isolation Forest · SHAP · LIME · GNNExplainer · Feature Engineering**
+**Machine Learning:** Python · scikit-learn · PyTorch · PyTorch Geometric · GraphSAGE · Random Forest · Isolation Forest · SHAP · LIME · GNNExplainer
 
-### Information Retrieval & GenAI
-**FAISS · BM25 · Reciprocal Rank Fusion · Cross-Encoder Reranking · Sentence Transformers · Retrieval-Augmented Generation · FastAPI · Groq**
+**Information Retrieval & GenAI:** FAISS · BM25 · Reciprocal Rank Fusion · Cross-Encoder Reranking · Sentence Transformers · RAG · FastAPI · Groq
 
-### Computer Science
-**Data Structures & Algorithms · OOP · DBMS · Operating Systems · Computer Networks · Concurrency · Distributed Systems Fundamentals**
+**CS Fundamentals:** DSA · OOP · DBMS · Operating Systems · Computer Networks · Concurrency
 
 ---
 
-## 📚 Currently Exploring
+## 🎓 Certifications
 
-- Advanced JVM internals and bytecode instrumentation
-- Distributed systems and consistency models
-- Security analytics and digital forensics
-- Graph-based security analytics
-- AI runtime security
-- Explainable AI for security systems
-- Scalable backend architecture
-- Hybrid retrieval and multi-paper research indexing
+Oracle Cloud Infrastructure 2025 AI Foundations Associate · NPTEL: Artificial Intelligence (Search Methods for Problem Solving) · NPTEL: Deep Learning · NPTEL: Large Language Models (in progress)
 
 ---
 
 ## 💻 Problem Solving
 
-I regularly practice algorithmic problem solving, with a focus on **data structures, algorithmic patterns, and implementation correctness**.
+**LeetCode:** 250 problems solved · 76.82% acceptance · Easy 85 · Medium 149 · Hard 16
 
-**LeetCode:** 214 problems solved  
-**Acceptance:** 76.15%  
-**Easy:** 67 · **Medium:** 132 · **Hard:** 15
-
-**Core areas:** Arrays · Hash Tables · Binary Search · Trees · Dynamic Programming · Backtracking · Two Pointers · Strings
-
-[View my LeetCode profile](https://leetcode.com/u/ravimnm28/)
+Strongest areas: Dynamic Programming, Backtracking, Hash Tables, Trees, Arrays, Two Pointers, Strings. [View profile](https://leetcode.com/u/ravimnm28/)
 
 ---
 
-## 📊 GitHub
-
-<p align="center">
-  <a href="https://github.com/ravimnm">
-    <img src="https://img.shields.io/github/followers/ravimnm?style=flat&label=Followers">
-  </a>
-  <a href="https://github.com/ravimnm?tab=repositories">
-    <img src="https://img.shields.io/badge/Public%20Repositories-15-blue?style=flat">
-  </a>
-</p>
----
-
-## 🌐 Connect
-
-- **GitHub:** [github.com/ravimnm](https://github.com/ravimnm)
-- **LinkedIn:** [linkedin.com/in/ravi-sankar-manem](https://linkedin.com/in/ravi-sankar-manem)
-- **LeetCode:** [leetcode.com/u/ravimnm28](https://leetcode.com/u/ravimnm28/)
-- **Email:** `manemravisankar28@gmail.com`
-
----
-
-> **Engineering principle:** I focus on building systems where **security, correctness, auditability, and observability are part of the architecture — not afterthoughts.**
+> **Engineering principle:** security, correctness, auditability and observability belong in the architecture, not in an afterthought.
