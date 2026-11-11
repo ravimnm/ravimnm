@@ -183,7 +183,11 @@ An in-process agent (`-javaagent`) that watches security-sensitive behavior insi
 
 ## 🎓 Certifications
 
-Oracle Cloud Infrastructure 2025 AI Foundations Associate · NPTEL: Artificial Intelligence (Search Methods for Problem Solving) · NPTEL: Deep Learning · NPTEL: Large Language Models (in progress)
+- **Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate**
+- **NPTEL — Large Language Models** (Silver)
+- **NPTEL — Introduction to Deep Learning** (Elite)
+- **NPTEL — AI: Search Methods for Problem Solving** (Elite)
+- **NPTEL — Internet of Things** (Top 2%)
 
 ---
 
