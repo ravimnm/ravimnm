@@ -2,7 +2,7 @@
 
 **Backend Engineer · Security & Applied AI**
 
-Final-year B.Tech CSE student at RGUKT Nuzvid (graduating May 2027, CGPA 8.45). I build backend systems where **correctness, auditability and observability** are part of the architecture: payment processing, tamper-evident audit infrastructure, JVM runtime security, and retrieval-augmented AI systems.
+Final-year B.Tech CSE student at RGUKT Nuzvid (graduating May 2027, CGPA 8.53). I build backend systems where **correctness, auditability and observability** are part of the architecture: payment processing, tamper-evident audit infrastructure, JVM runtime security, and retrieval-augmented AI systems.
 
 Currently exploring distributed systems, JVM instrumentation, graph neural networks and AI security.
 
@@ -200,3 +200,4 @@ Strongest areas: Dynamic Programming, Backtracking, Hash Tables, Trees, Arrays, 
 ---
 
 > **Engineering principle:** security, correctness, auditability and observability belong in the architecture, not in an afterthought.
+
