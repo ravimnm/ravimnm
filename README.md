@@ -4,7 +4,7 @@
 
 Final-year B.Tech CSE student at RGUKT Nuzvid (graduating May 2027, CGPA 8.53). I build backend systems where **correctness, auditability and observability** are part of the architecture: payment processing, tamper-evident audit infrastructure, JVM runtime security, and retrieval-augmented AI systems.
 
-Currently exploring distributed systems, JVM instrumentation, graph neural networks and AI security.
+Currently focused on backend engineering, distributed systems, database concurrency, JVM internals, and security-oriented software. Interested in building reliable systems that remain correct under concurrency, failure, and scale.
 
 📫 [LinkedIn](https://linkedin.com/in/ravi-sankar-manem) · [LeetCode](https://leetcode.com/u/ravimnm28/) · `manemravisankar28@gmail.com`
 
