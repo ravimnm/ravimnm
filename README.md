@@ -6,7 +6,7 @@ Final-year B.Tech CSE student at RGUKT Nuzvid (graduating May 2027, CGPA 8.53). 
 
 Currently focused on backend engineering, distributed systems, database concurrency, JVM internals, and security-oriented software. Interested in building reliable systems that remain correct under concurrency, failure, and scale.
 
-📫 [LinkedIn](https://linkedin.com/in/ravi-sankar) · [LeetCode](https://leetcode.com/u/ravimnm28/) · `manemravisankar28@gmail.com`
+📫 [LinkedIn](https://linkedin.com/in/ravi-sankar-manem) · [LeetCode](https://leetcode.com/u/ravimnm28/) · `manemravisankar28@gmail.com`
 
 ---
 
